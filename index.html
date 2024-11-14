@@ -45,8 +45,6 @@
                 }));
 
             const ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 4, height: 4});
-            groundMaterial.diffuseColor = BABYLON.Color3.Random();
-            ground.material = groundMaterial;
 
             const xrPromise = scene.createDefaultXRExperienceAsync({
                 floorMeshes: [ground]
