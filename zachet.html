@@ -8,6 +8,11 @@
 <body>
     <canvas id="renderCanvas"></canvas>
     <script>
+        const music = new BABYLON.Sound("Music", "Sweden.mp3", scene, null, {
+            loop: true,
+            autoplay: true,
+        });
+        
         const canvas = document.getElementById("renderCanvas");
         const engine = new BABYLON.Engine(canvas, true);
 
@@ -29,8 +34,8 @@
             box.position.x = 0.5;
             box.position.y = 1;
 
-            const boxMaterial = new BABYLON.StandardMaterial("material", scene);
-            boxMaterial.diffuseColor = new BABYLON.Texture('./planks_texture.png');
+            const boxMaterial = new BABYLON.StandardMaterial();
+            boxMaterial.diffuseColor = new BABYLON.Texture('planks_texture.png');
             box.material = boxMaterial;
 
             box.actionManager = new BABYLON.ActionManager(scene);
