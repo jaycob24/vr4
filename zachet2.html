@@ -15,57 +15,65 @@
         const engine = new BABYLON.Engine(canvas, true);
 
         const createScene = function() {
-          const scene = new BABYLON.Scene(engine);
-          const camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, BABYLON.Vector3.Zero(), scene);
-          camera.attachControl(canvas, true);
-          const light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
+            const scene = new BABYLON.Scene(engine);
+            const camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 10, BABYLON.Vector3.Zero(), scene);
+            camera.attachControl(canvas, true);
+            const light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
 
-          // Создаем куб
-          const box1 = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+            // Создаем кубы
+            const box1 = BABYLON.MeshBuilder.CreateBox("box1", { size: 1 }, scene);
             box1.position.x = 0.5;
             box1.position.y = 1;
-            const box2 = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+
+            const box2 = BABYLON.MeshBuilder.CreateBox("box2", { size: 1 }, scene);
             box2.position.x = 2;
             box2.position.y = 5;
-            const box3 = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+
+            const box3 = BABYLON.MeshBuilder.CreateBox("box3", { size: 1 }, scene);
             box3.position.x = -1;
             box3.position.y = 2;
-            const box4 = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+
+            const box4 = BABYLON.MeshBuilder.CreateBox("box4", { size: 1 }, scene);
             box4.position.x = 0.5;
             box4.position.y = 6;
-            const box5 = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+
+            const box5 = BABYLON.MeshBuilder.CreateBox("box5", { size: 1 }, scene);
             box5.position.x = 0.5;
             box5.position.y = -3;
 
-            const music = new BABYLON.Sound("Music", "Sweden.wav", scene, null, {loop: true, autoplay: true});
+            // Загружаем текстуру
+            const texture = new BABYLON.Texture("planks_texture.jpg", scene);
 
-          // Загружаем текстуру (замените путь)
-          const texture = new BABYLON.Texture("planks_texture.jpg", scene);
+            // Создаем материал
+            const material = new BABYLON.StandardMaterial("material", scene);
 
-          // Создаем материал
-          const material = new BABYLON.StandardMaterial("material", scene);
+            // Привязываем текстуру к материалу
+            material.diffuseTexture = texture;
 
-          // Привязываем текстуру к материалу
-          material.diffuseTexture = texture;
-
-          // Применяем материал к кубу
-          box1.material = material;
+            // Применяем материал к кубам
+            box1.material = material;
             box2.material = material;
             box3.material = material;
             box4.material = material;
             box5.material = material;
 
+           // Добавляем аудио
+            const music = new BABYLON.Sound("music", "Sweden.wav", scene, null, {
+                loop: true,
+                autoplay: true,
+                spatialSound: false, // Установите true для пространственного звучания
+            });
 
-          return scene;
+            return scene;
         };
 
         const scene = createScene();
 
-        engine.runRenderLoop(function(){
+        engine.runRenderLoop(function() {
             scene.render();
         });
 
-        window.addEventListener('resize', function(){
+        window.addEventListener('resize', function() {
             engine.resize();
         });
     </script>
