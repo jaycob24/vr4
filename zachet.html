@@ -8,10 +8,7 @@
 <body>
     <canvas id="renderCanvas"></canvas>
     <script>
-        const music = new BABYLON.Sound("Music", "Sweden.mp3", scene, null, {
-            loop: true,
-            autoplay: true,
-        });
+        const music = new BABYLON.Sound("Music", "Sweden.mp3", scene, null, {loop: true, autoplay: true});
         
         const canvas = document.getElementById("renderCanvas");
         const engine = new BABYLON.Engine(canvas, true);
