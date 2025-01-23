@@ -27,14 +27,35 @@
 
             const music = new BABYLON.Sound("Music", "Sweden.mp3", scene, null, {loop: true, autoplay: true});
             
-            const box = BABYLON.MeshBuilder.CreateBox("box", {});
+            const box = BABYLON.MeshBuilder.CreateBox("box1", {});
             box.position.x = 0.5;
             box.position.y = 1;
 
+            const box = BABYLON.MeshBuilder.CreateBox("box2", {});
+            box.position.x = 2;
+            box.position.y = 5;
+
+            const box = BABYLON.MeshBuilder.CreateBox("box3", {});
+            box.position.x = -1;
+            box.position.y = 2;
+
+            const box = BABYLON.MeshBuilder.CreateBox("box4", {});
+            box.position.x = 0.5;
+            box.position.y = 6;
+
+            const box = BABYLON.MeshBuilder.CreateBox("box5", {});
+            box.position.x = 0.5;
+            box.position.y = -3;
+
             const boxMaterial = new BABYLON.StandardMaterial();
             boxMaterial.diffuseColor = new BABYLON.Texture('planks_texture.png');
-            box.material = boxMaterial;
+            box1.material = boxMaterial;
+            box2.material = boxMaterial;
+            box3.material = boxMaterial;
+            box4.material = boxMaterial;
+            box5.material = boxMaterial;
 
+            /*
             box.actionManager = new BABYLON.ActionManager(scene);
             box.actionManager.registerAction(
                 new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, 
@@ -45,6 +66,7 @@
 
                     boxMaterial.diffuseColor = BABYLON.Color3.Random();
                 }));
+            */
 
             const ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 4, height: 4});
 
