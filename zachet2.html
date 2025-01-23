@@ -57,11 +57,9 @@
             box4.material = material;
             box5.material = material;
 
-           // Добавляем аудио
-            const music = new BABYLON.Sound("music", "Wet_hands.mp3", scene, null, {
-                loop: true,
-                autoplay: true,
-                spatialSound: false, // Установите true для пространственного звучания
+            const music = new BABYLON.Sound("Music", "Wet_hands.mp3", scene, null, {
+              loop: true,
+              autoplay: true,
             });
 
             return scene;
