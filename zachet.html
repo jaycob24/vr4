@@ -8,8 +8,6 @@
 <body>
     <canvas id="renderCanvas"></canvas>
     <script>
-        const music = new BABYLON.Sound("Music", "Sweden.mp3", scene, null, {loop: true, autoplay: true});
-        
         const canvas = document.getElementById("renderCanvas");
         const engine = new BABYLON.Engine(canvas, true);
 
@@ -27,6 +25,8 @@
 
             const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0));
 
+            const music = new BABYLON.Sound("Music", "Sweden.mp3", scene, null, {loop: true, autoplay: true});
+            
             const box = BABYLON.MeshBuilder.CreateBox("box", {});
             box.position.x = 0.5;
             box.position.y = 1;
