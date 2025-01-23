@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Babylon.js с музыкой</title>
+    <style>
+        html, body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+    </style>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const canvas = document.getElementById("renderCanvas");
+            const engine = new BABYLON.Engine(canvas, true);
+            let scene;
+            let camera;
+            let cube;
+            let music;
+
+
+            function createScene() {
+              scene = new BABYLON.Scene(engine);
+
+              camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 5, BABYLON.Vector3.Zero(), scene);
+              camera.attachControl(canvas, true);
+
+              const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+              light.intensity = 0.7;
+
+              cube = BABYLON.MeshBuilder.CreateBox("cube", { size: 2 }, scene);
+
+              const material = new BABYLON.StandardMaterial("cubeMat", scene);
+              material.diffuseColor = new BABYLON.Color3(0.1, 0.5, 1.0);
+              cube.material = material;
+
+              scene.onBeforeRenderObservable.add(() => {
+                  cube.rotation.y += 0.01;
+                  cube.rotation.z += 0.005;
+                  cube.rotation.x += 0.003;
+              });
+
+              // Загружаем и воспроизводим музыку
+              music = new BABYLON.Sound("music", "Wet_hands.mp3", scene, null, {
+                loop: true,
+                autoplay: true,
+              });
+
+              return scene;
+            }
+
+
+            scene = createScene();
+            engine.runRenderLoop(function() {
+              scene.render();
+            });
+
+            window.addEventListener("resize", function() {
+              engine.resize();
+            });
+
+        });
+    </script>
+</body>
+</html>
