@@ -16,6 +16,7 @@
 
         const createScene = function() {
             const scene = new BABYLON.Scene(engine);
+            scene.clearColor = new BABYLON.Color3.Random();
             const camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 10, BABYLON.Vector3.Zero(), scene);
             camera.attachControl(canvas, true);
             const light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
