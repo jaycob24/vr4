@@ -48,14 +48,14 @@
             box5.position.y = -3;
 
             const boxMaterial = new BABYLON.StandardMaterial();
+            const texture = new BABYLON.Texture("/planks_texture.png", scene);
+            boxMaterial.diffuseTexture = texture;
             
             box1.material = boxMaterial;
             box2.material = boxMaterial;
             box3.material = boxMaterial;
             box4.material = boxMaterial;
             box5.material = boxMaterial;
-
-            boxMaterial.diffuseColor = new BABYLON.Texture('/planks_texture.png');
 
             /*
             box.actionManager = new BABYLON.ActionManager(scene);
