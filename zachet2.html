@@ -21,7 +21,6 @@
             camera.attachControl(canvas, true);
             const light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
 
-            // Создаем кубы
             const box1 = BABYLON.MeshBuilder.CreateBox("box1", { size: 1 }, scene);
             box1.position.x = 0;
             box1.position.y = 0;
@@ -42,16 +41,12 @@
             box5.position.x = -1;
             box5.position.y = 2;
 
-            // Загружаем текстуру
             const texture = new BABYLON.Texture("planks_texture.jpg", scene);
 
-            // Создаем материал
             const material = new BABYLON.StandardMaterial("material", scene);
 
-            // Привязываем текстуру к материалу
             material.diffuseTexture = texture;
 
-            // Применяем материал к кубам
             box1.material = material;
             box2.material = material;
             box3.material = material;
