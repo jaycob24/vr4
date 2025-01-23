@@ -21,7 +21,23 @@
           const light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
 
           // Создаем куб
-          const cube = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+          const box1 = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+            box1.position.x = 0.5;
+            box1.position.y = 1;
+            const box2 = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+            box2.position.x = 2;
+            box2.position.y = 5;
+            const box3 = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+            box3.position.x = -1;
+            box3.position.y = 2;
+            const box4 = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+            box4.position.x = 0.5;
+            box4.position.y = 6;
+            const box5 = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+            box5.position.x = 0.5;
+            box5.position.y = -3;
+
+            const music = new BABYLON.Sound("Music", "Sweden.mp3", scene, null, {loop: true, autoplay: true});
 
           // Загружаем текстуру (замените путь)
           const texture = new BABYLON.Texture("planks_texture.jpg", scene);
@@ -33,7 +49,11 @@
           material.diffuseTexture = texture;
 
           // Применяем материал к кубу
-          cube.material = material;
+          box1.material = material;
+            box2.material = material;
+            box3.material = material;
+            box4.material = material;
+            box5.material = material;
 
 
           return scene;
